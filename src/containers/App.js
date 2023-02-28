@@ -15,6 +15,9 @@ function App(){
     //     }
     // }
 
+    const [robots, setRobots] = useState([])
+    const [searchfield, setSearchfield]=useState('')
+
     // componentDidMount(){
     //     fetch('https://jsonplaceholder.typicode.com/users')
     //     .then(response=>{
@@ -25,23 +28,32 @@ function App(){
     //     })
         
     // }
+    useEffect(()=>{
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response=>{
+            return response.json();
+        })
+        .then(users=>{
+            setRobots(users)
+        })
+    },[])
 
     const onSearchChange= (event) => {
-        this.setState({searchfield: event.target.value})
+        setSearchfield(event.target.value)
     }
 
     
-        const filteredRobots=this.state.robots.filter(robot=>{
-            return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
+        const filteredRobots=robots.filter(robot=>{
+            return robot.name.toLowerCase().includes(searchfield.toLowerCase())
         })
-        if(this.state.robots.length===0){
+        if(robots.length===0){
             return <h1>Loading</h1>
         }
         else{
             return (
                 <div className="tc">
                     <h1 className="f1">RoboFriends</h1>
-                    <SearchBox searchChange={this.onSearchChange}/>
+                    <SearchBox searchChange={onSearchChange}/>
                     <Scroll>
                         <ErrorBoundry>
                            <CardList robots={filteredRobots}/>
