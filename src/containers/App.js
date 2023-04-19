@@ -6,7 +6,7 @@ import ErrorBoundry from "../components/ErrorBoundry";
 import './App.css';
 
 
-export function App(){
+function App(){
     // constructor(){
     //     super()
     //     this.state={
@@ -70,4 +70,4 @@ export function App(){
     
   
 }
-
+export default App;
