@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 
-export const CardList = ({robots}) =>{
+const CardList = ({robots}) =>{
     
     
     return(
@@ -20,4 +20,6 @@ export const CardList = ({robots}) =>{
         </div>
     );
 }
+
+export default CardList;
 
